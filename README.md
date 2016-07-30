@@ -9,6 +9,7 @@ The wiring in changed from the original schematic of Nick Gammon.
 The SPI pin on programming board and target chip is now matched,
 in order to have HVPP and ISP programming mode using same schematic.
 
+```
           Original wiring        |             Modified Wiring
 Programming board | Target chip  |  Programming board | Target chip
         D9        |   17 (PB3)   |        D9          |   23 (PC0)   
@@ -17,7 +18,9 @@ Programming board | Target chip  |  Programming board | Target chip
         D12       |   23 (PC0)   |        D12 (MISO)  |   18 (PB4/MISO)   
         D13       |   24 (PC1)   |        D13 (SCK)   |   19 (PB5/SCK)   
 
+```
 Two jumper (J1, J3) is added to switch between ISP and HVPP mode.
+```
 - J1: to switch RESET line of target chip
          1 2 3
          | | |
@@ -30,6 +33,7 @@ Two jumper (J1, J3) is added to switch between ISP and HVPP mode.
          | | *------> (HVPP mode) to D5 pin of programming board.  
 	     | *--------> target chip VCC + AVCC pin.
          *----------> (ISP mode) to 5V pin of programming board.
+```
 When using HVPP mode, upload sketch (compiled with HIGH_VOLTAGE_PARALLEL set to true), change jumper J1 J2 to position 2-3, and run.
 When using ISP mode, upload sketch (compiled with ICSP_PROGRAMMING set to true), change jumper J1 J2 to position 1-2, and run.
 				

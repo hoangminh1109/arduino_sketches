@@ -3,6 +3,36 @@ arduino_sketches
 
 Publicly-released sketches for the Arduino microprocessor.
 
+UPDATE (revised by Hoang Minh 2016-07-30)
+------
+The wiring in changed from the original schematic of Nick Gammon.
+The SPI pin on programming board and target chip is now matched,
+in order to have HVPP and ISP programming mode using same schematic.
+
+          Original wiring        |             Modified Wiring
+Programming board | Target chip  |  Programming board | Target chip
+        D9        |   17 (PB3)   |        D9          |   23 (PC0)   
+        D10       |   18 (PB4)   |        D10         |   24 (PC1)   
+        D11       |   19 (PB5)   |        D11 (MOSI)  |   17 (PB3/MOSI)   
+        D12       |   23 (PC0)   |        D12 (MISO)  |   18 (PB4/MISO)   
+        D13       |   24 (PC1)   |        D13 (SCK)   |   19 (PB5/SCK)   
+
+Two jumper (J1, J3) is added to switch between ISP and HVPP mode.
+- J1: to switch RESET line of target chip
+         1 2 3
+         | | |
+         | | *------> (HVPP mode) to Drain pin of MOSFET on reset circuit of HVPP.  
+	     | *--------> target chip RESET pin.
+         *----------> (ISP mode) to D10 pin of programming board.
+- J2: to switch VCC line of target chip
+         1 2 3
+         | | |
+         | | *------> (HVPP mode) to D5 pin of programming board.  
+	     | *--------> target chip VCC + AVCC pin.
+         *----------> (ISP mode) to 5V pin of programming board.
+When using HVPP mode, upload sketch (compiled with HIGH_VOLTAGE_PARALLEL set to true), change jumper J1 J2 to position 2-3, and run.
+When using ISP mode, upload sketch (compiled with ICSP_PROGRAMMING set to true), change jumper J1 J2 to position 1-2, and run.
+				
 Update
 ------
 
@@ -320,11 +350,11 @@ Arduino    Target chip
   D6       14 (PB0) (data bit 0)
   D7       15 (PB1) (data bit 1)
   D8       16 (PB2) (data bit 2)
-  D9       17 (PB3) (data bit 3)
-  D10      18 (PB4) (data bit 4)
-  D11      19 (PB5) (data bit 5)
-  D12      23 (PC0) (data bit 6)
-  D13      24 (PC1) (data bit 7)
+  D11      17 (PB3) (data bit 3) <-- changed by Hoang Minh @2016-07-30
+  D12      18 (PB4) (data bit 4) <-- changed by Hoang Minh @2016-07-30
+  D13      19 (PB5) (data bit 5) <-- changed by Hoang Minh @2016-07-30
+  D9       23 (PC0) (data bit 6) <-- changed by Hoang Minh @2016-07-30
+  D10      24 (PC1) (data bit 7) <-- changed by Hoang Minh @2016-07-30
   A0        3 (PD1)
   A1        4 (PD2)
   A2        5 (PD3)

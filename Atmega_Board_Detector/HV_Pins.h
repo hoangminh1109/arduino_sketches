@@ -42,11 +42,11 @@ That will ensure that those directories now are using the same file.
     6,                        // 14 (PB0) (data bit 0)
     7,                        // 15 (PB1) (data bit 1)
     8,                        // 16 (PB2) (data bit 2)
-    9,                        // 17 (PB3) (data bit 3)  
-    10,                       // 18 (PB4) (data bit 4)
-    11,                       // 19 (PB5) (data bit 5)  
-    12,                       // 23 (PC0) (data bit 6)
-    13                        // 24 (PC1) (data bit 7)
+    11,                       // 17 (PB3) (data bit 3)  
+    12,                       // 18 (PB4) (data bit 4)
+    13,                       // 19 (PB5) (data bit 5)  
+    9,                        // 23 (PC0) (data bit 6)
+    10                        // 24 (PC1) (data bit 7)
     };    // end of dataPins
 
   enum {                                        
